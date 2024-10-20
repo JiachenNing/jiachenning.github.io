@@ -2,7 +2,7 @@
 import React from "react";
 
 // reactstrap components
-import { Container } from "reactstrap";
+import { Container, Button } from "reactstrap";
 // core components
 
 function IndexHeader() {
@@ -39,30 +39,22 @@ function IndexHeader() {
               className="n-logo"
               src={require("assets/img/now-logo.png")}
             ></img>
-            <h1 className="h1-seo">Now UI Kit.</h1>
-            <h3>A beautiful Bootstrap 4 UI kit. Yours free.</h3>
+            <h1 className="h1-seo">Vacation Master</h1>
+            <h3>Tell us where you're going, we make travel plans instantaneously!</h3>
+            <Button 
+              color="info" 
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("basic-elements")
+                  .scrollIntoView();
+            }}
+            >
+              Get Started!
+            </Button>
           </div>
           <h6 className="category category-absolute">
-            Designed by{" "}
-            <a href="http://invisionapp.com/?ref=creativetim" target="_blank">
-              <img
-                alt="..."
-                className="invision-logo"
-                src={require("assets/img/invision-white-slim.png")}
-              ></img>
-            </a>
-            . Coded by{" "}
-            <a
-              href="https://www.creative-tim.com?ref=nukr-index-header"
-              target="_blank"
-            >
-              <img
-                alt="..."
-                className="creative-tim-logo"
-                src={require("assets/img/creative-tim-white-slim2.png")}
-              ></img>
-            </a>
-            .
+            Designed & coded by Kelly Ning
           </h6>
         </Container>
       </div>

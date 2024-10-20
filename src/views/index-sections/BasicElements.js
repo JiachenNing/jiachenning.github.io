@@ -3,6 +3,8 @@ import React from "react";
 import Switch from "react-bootstrap-switch";
 // plugin that creates slider
 import Slider from "nouislider";
+import { useState } from 'react';
+import { Configuration, OpenAIApi } from "openai";
 
 // reactstrap components
 import {
@@ -47,141 +49,86 @@ function BasicElements() {
       });
     }
   });
+  const [startLocation, setStartLocation] = React.useState('');
+  const [endLocation, setEndLocation] = React.useState('');
+  const [numberOfDays, setNumberOfDays] = React.useState('');
+
+  function setStart(event) {
+    setStartLocation(event.target.value);
+  }
+
+  function setEnd(event) {
+    setEndLocation(event.target.value);
+  }
+
+  function setDays(event) {
+    setNumberOfDays(event.target.value);
+  }
+  
+
+  const [travelPlan, setTravelPlann] = useState([]);
+
+  async function handleInputSubmit(event) {
+    event.preventDefault();
+    const configuration = new Configuration({
+      apiKey: "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",
+    });
+    const openai = new OpenAIApi(configuration);
+    const response = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [{role: "user", content: `Come up with a travel plan from ${startLocation} to ${endLocation} for ${numberOfDays} days`}]
+    });
+    const message = response.data.choices[0].message.content;
+    setTravelPlann(message);
+  }
+  
   return (
     <>
       <div className="section section-basic" id="basic-elements">
         <Container>
-          <h3 className="title">Basic Elements</h3>
-          <h4>Buttons</h4>
-          <p className="category">Pick your style</p>
-          <Row>
-            <Col md="10">
-              <Button color="info" type="button">
-                Default
-              </Button>
-              <Button className="btn-round" color="info" type="button">
-                Round
-              </Button>
-              <Button className="btn-round" color="info" type="button">
-                <i className="now-ui-icons ui-2_favourite-28"></i>
-                With Icon
-              </Button>
-              <Button className="btn-icon btn-round" color="info" type="button">
-                <i className="now-ui-icons ui-2_favourite-28"></i>
-              </Button>
-              <Button className="btn-round" color="info" outline type="button">
-                Outline
-              </Button>
-            </Col>
-          </Row>
-          <p className="category">Pick your size</p>
-          <Row>
-            <Col md="10">
-              <Button color="info" size="sm">
-                Small
-              </Button>
-              <Button color="info">Regular</Button>
-              <Button color="info" size="lg">
-                Large
-              </Button>
-            </Col>
-          </Row>
-          <p className="category">Pick your color</p>
-          <Row>
-            <Col md="10">
-              <Button color="default">Default</Button>
-              <Button color="primary">Primary</Button>
-              <Button color="info">Info</Button>
-              <Button color="success">Success</Button>
-              <Button color="warning">Warning</Button>
-              <Button color="danger">Danger</Button>
-              <Button className="btn-neutral" color="default">
-                Neutral
-              </Button>
-            </Col>
-          </Row>
-          <h4>Links</h4>
-          <Row>
-            <Col md="8">
-              <Button color="link">Default</Button>
-              <Button className="btn-link" color="primary">
-                Primary
-              </Button>
-              <Button className="btn-link" color="info">
-                Info
-              </Button>
-              <Button className="btn-link" color="success">
-                Success
-              </Button>
-              <Button className="btn-link" color="warning">
-                Warning
-              </Button>
-              <Button className="btn-link" color="danger">
-                Danger
-              </Button>
-            </Col>
-          </Row>
+        <div>
+      <div>
+        {travelPlan}
+      </div>
+      </div>
           <div className="space-70"></div>
           <div id="inputs">
-            <h4>Inputs</h4>
-            <p className="category">Form Controls</p>
             <Row>
               <Col lg="3" sm="6">
+                <p className="category">From</p>
                 <FormGroup>
                   <Input
                     defaultValue=""
-                    placeholder="Regular"
+                    placeholder="Where are you now"
                     type="text"
+                    onChange={setStart}
+                  ></Input>
+                </FormGroup>
+                <FormGroup>
+                  <Button color="primary" onClick={handleInputSubmit}>Go</Button>
+                </FormGroup>
+              </Col>
+              <Col lg="3" sm="6">
+                <p className="category">To</p>
+                <FormGroup>
+                  <Input
+                    defaultValue=""
+                    placeholder="Where are you going"
+                    type="text"
+                    onChange={setEnd}
                   ></Input>
                 </FormGroup>
               </Col>
               <Col lg="3" sm="6">
-                <FormGroup className="has-success">
+                <p className="category">Days of stay</p>
+                <FormGroup>
                   <Input
-                    className="form-control-success"
-                    defaultValue="Success"
+                    defaultValue=""
+                    placeholder="How long do you plan to travel"
                     type="text"
+                    onChange={setDays}
                   ></Input>
                 </FormGroup>
-              </Col>
-              <Col lg="3" sm="6">
-                <FormGroup className="has-danger">
-                  <Input
-                    className="form-control-danger"
-                    defaultValue="Error Input"
-                    type="email"
-                  ></Input>
-                </FormGroup>
-              </Col>
-              <Col lg="3" sm="6">
-                <InputGroup className={leftFocus ? "input-group-focus" : ""}>
-                  <InputGroupAddon addonType="prepend">
-                    <InputGroupText>
-                      <i className="fa fa-user-circle"></i>
-                    </InputGroupText>
-                  </InputGroupAddon>
-                  <Input
-                    placeholder="Left Font Awesome Icon"
-                    type="text"
-                    onFocus={() => setLeftFocus(true)}
-                    onBlur={() => setLeftFocus(false)}
-                  ></Input>
-                </InputGroup>
-              </Col>
-              <Col lg="3" sm="6">
-                <InputGroup className={rightFocus ? "input-group-focus" : ""}>
-                  <Input
-                    placeholder="Right Nucleo Icon"
-                    type="text"
-                    onFocus={() => setRightFocus(true)}
-                    onBlur={() => setRightFocus(false)}
-                  ></Input>
-                  <InputGroupAddon addonType="append">
-                    <InputGroupText>
-                      <i className="now-ui-icons users_single-02"></i>
-                    </InputGroupText>
-                  </InputGroupAddon>
-                </InputGroup>
               </Col>
             </Row>
           </div>
@@ -273,12 +220,7 @@ function BasicElements() {
                 </Label>
               </FormGroup>
             </Col>
-            <Col lg="3" sm="6">
-              <p className="category">Toggle Buttons</p>
-              <Switch offColor="" offText="" onColor="" onText=""></Switch>
-              <br></br>
-              <Switch defaultValue={false} offColor="" onColor=""></Switch>
-            </Col>
+            
             <Col lg="3" sm="6">
               <p className="category">Sliders</p>
               <div className="slider" id="sliderRegular"></div>
