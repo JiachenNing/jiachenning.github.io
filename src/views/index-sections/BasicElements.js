@@ -71,7 +71,7 @@ function BasicElements() {
   async function handleInputSubmit(event) {
     event.preventDefault();
     const configuration = new Configuration({
-      apiKey: "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",
+      apiKey: "TODO",
     });
     const openai = new OpenAIApi(configuration);
     const response = await openai.createChatCompletion({
