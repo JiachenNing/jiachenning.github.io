@@ -68,18 +68,8 @@ function BasicElements() {
 
   const [travelPlan, setTravelPlann] = useState([]);
 
+  // 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
   async function handleInputSubmit(event) {
-    event.preventDefault();
-    const configuration = new Configuration({
-      apiKey: "TODO",
-    });
-    const openai = new OpenAIApi(configuration);
-    const response = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages: [{role: "user", content: `Come up with a travel plan from ${startLocation} to ${endLocation} for ${numberOfDays} days`}]
-    });
-    const message = response.data.choices[0].message.content;
-    setTravelPlann(message);
   }
   
   return (
