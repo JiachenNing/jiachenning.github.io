@@ -52,31 +52,7 @@ function IndexNavbar() {
       ) : null}
       <Navbar className={"fixed-top " + navbarColor} expand="lg" color="info">
         <Container>
-          <div className="navbar-translate">
-            <NavbarBrand
-              href="https://demos.creative-tim.com/now-ui-kit-react/#/index?ref=nukr-index-navbar"
-              target="_blank"
-              id="navbar-brand"
-            >
-              vacation
-            </NavbarBrand>
-            <UncontrolledTooltip target="#navbar-brand">
-              Designed by Invision. Coded by Creative Tim
-            </UncontrolledTooltip>
-            <button
-              className="navbar-toggler navbar-toggler"
-              onClick={() => {
-                document.documentElement.classList.toggle("nav-open");
-                setCollapseOpen(!collapseOpen);
-              }}
-              aria-expanded={collapseOpen}
-              type="button"
-            >
-              <span className="navbar-toggler-bar top-bar"></span>
-              <span className="navbar-toggler-bar middle-bar"></span>
-              <span className="navbar-toggler-bar bottom-bar"></span>
-            </button>
-          </div>
+
           <Collapse
             className="justify-content-end"
             isOpen={collapseOpen}

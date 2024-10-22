@@ -39,13 +39,13 @@ function Index() {
   });
   return (
     <>
-      <IndexNavbar />
+      {/* <IndexNavbar /> */}
       <div className="wrapper">
-        <IndexHeader />
+        {/* <IndexHeader /> */}
         <div className="main">
           {/* <Images /> */}
           <BasicElements />
-          <Navbars />
+          {/* <Navbars />
           <Tabs />
           <Pagination />
           <Notifications />
@@ -56,9 +56,9 @@ function Index() {
           <CompleteExamples />
           <SignUp />
           <Examples />
-          <Download />
+          <Download /> */}
         </div>
-        <DarkFooter />
+        {/* <DarkFooter /> */}
       </div>
     </>
   );

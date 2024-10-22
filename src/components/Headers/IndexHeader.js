@@ -32,7 +32,7 @@ function IndexHeader() {
           }}
           ref={pageHeader}
         ></div>
-        <Container>
+        {/* <Container>
           <div className="content-center brand">
             <img
               alt="..."
@@ -56,7 +56,7 @@ function IndexHeader() {
           <h6 className="category category-absolute">
             Designed & coded by Kelly Ning
           </h6>
-        </Container>
+        </Container> */}
       </div>
     </>
   );

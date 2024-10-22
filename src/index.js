@@ -38,7 +38,7 @@ root.render(
     <Switch>
       <Switch>
         <Route path="/index" render={(props) => <Index {...props} />} />
-        <Route
+        {/* <Route
           path="/nucleo-icons"
           render={(props) => <NucleoIcons {...props} />}
         />
@@ -53,7 +53,7 @@ root.render(
         <Route
           path="/login-page"
           render={(props) => <LoginPage {...props} />}
-        />
+        /> */}
         <Redirect to="/index" />
         <Redirect from="/" to="/index" />
       </Switch>
