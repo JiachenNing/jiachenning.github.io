@@ -24,34 +24,34 @@ const Test = () => {
         formData.append('OCREngine', '2');
       
         try {
-          // const response = await fetch('https://api.ocr.space/parse/image', {
-          //   method: 'POST',
-          //   body: formData,
-          // });
+          const response = await fetch('https://api.ocr.space/parse/image', {
+            method: 'POST',
+            body: formData,
+          });
       
-          // if (!response.ok) {
-          //   throw new Error('OCR request failed!');
-          // }
+          if (!response.ok) {
+            throw new Error('OCR request failed!');
+          }
       
-          // const result = await response.json();
-          // const text = result?.ParsedResults?.[0]?.ParsedText;
+          const result = await response.json();
+          const text = result?.ParsedResults?.[0]?.ParsedText;
 
-          // console.log(result);
-          // console.log(text);
+          console.log(result);
+          console.log(text);
 
-          const text = `生产数量 发货数量	2024年装柜数据	每箱重量	箱规													
-          业务员	装柜日	发票号	产品编号	（箱）	（箱）	平均每箱	重量	总毛重	净重	总体积	备注					
-          1	2	3	4	5	长	宽	高									
-          30*60蓝	210	210	4.02	4.08	4.02	4.04	848	756	32	32	33	7.1				
-          30*60白	60	60	4.08	4.06	4.06	4.07	244	216	32	32	33	2.03				
-          3421宁继宏	日期：2024-04															
-          30*30黄	100	100	4.1	4.06	4.06	4.07	407	360	32	32	33	3.38	LOT:042024			
-          黄银燕	8月27日															
-          30*30紅	120	120	4	4.02	4. 04	4.02	482	432	32	32	33	4.06				
-          3420宁继宏	30*33红/卷	350	350	6.25	6.2	6.25	6.23	2181	1663	49	33	31.5	17.83	日期：2024-04		
-          LOT: 042024																
-          3446宁继宏	3038白色网孔	4389	744	5.16	5.16	5.22	5.18	3854	3393	40	32	36	34.28	LOT: 082024	日期：2024-08	
-          1584	8016	6820	68.68`												
+          // const text = `生产数量 发货数量	2024年装柜数据	每箱重量	箱规													
+          // 业务员	装柜日	发票号	产品编号	（箱）	（箱）	平均每箱	重量	总毛重	净重	总体积	备注					
+          // 1	2	3	4	5	长	宽	高									
+          // 30*60蓝	210	210	4.02	4.08	4.02	4.04	848	756	32	32	33	7.1				
+          // 30*60白	60	60	4.08	4.06	4.06	4.07	244	216	32	32	33	2.03				
+          // 3421宁继宏	日期：2024-04															
+          // 30*30黄	100	100	4.1	4.06	4.06	4.07	407	360	32	32	33	3.38	LOT:042024			
+          // 黄银燕	8月27日															
+          // 30*30紅	120	120	4	4.02	4. 04	4.02	482	432	32	32	33	4.06				
+          // 3420宁继宏	30*33红/卷	350	350	6.25	6.2	6.25	6.23	2181	1663	49	33	31.5	17.83	日期：2024-04		
+          // LOT: 042024																
+          // 3446宁继宏	3038白色网孔	4389	744	5.16	5.16	5.22	5.18	3854	3393	40	32	36	34.28	LOT: 082024	日期：2024-08	
+          // 1584	8016	6820	68.68`												
 
           // Step 1: Clean the input string by replacing \t, \r, and \n with spaces
           // e.g. "2024年装柜数据\t\r\n每箱重量\t平均每箱\t箱规\t\r\n业务员\t装柜日\t发票号\t产品编号\t生产数量\t（箱）\t发货数量\t（箱）
