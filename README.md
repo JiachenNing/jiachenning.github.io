@@ -11,4 +11,4 @@ cp -r build/* .
 git add .
 ...
 
-Or you can just copy the index.html file to the root manually since the rest doest not really change 
+Or you can just copy content of index.html file (in build directory) to the root manually since the rest doest not really change 

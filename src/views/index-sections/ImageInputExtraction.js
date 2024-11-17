@@ -1,9 +1,7 @@
-import {
-    Button
-  } from "reactstrap";
 import * as XLSX from 'xlsx';
-import { keywords, rawData } from './itemList';
-import { hsCode } from './itemHsCode';
+import { HangzhouLogic } from './HangzhouLogic';
+import { XiantaoLogic } from './XiantaoLogic';
+import { HuzhouLogic } from './HuzhouLogic';
 
 const ImageInputExtraction = ({ selectedOption }) => {
     const extractText = async (file) => {
@@ -22,20 +20,20 @@ const ImageInputExtraction = ({ selectedOption }) => {
         formData.append('OCREngine', '2');
       
         try {
-          const response = await fetch('https://api.ocr.space/parse/image', {
-            method: 'POST',
-            body: formData,
-          });
+          // const response = await fetch('https://api.ocr.space/parse/image', {
+          //   method: 'POST',
+          //   body: formData,
+          // });
       
-          if (!response.ok) {
-            throw new Error('OCR request failed!');
-          }
+          // if (!response.ok) {
+          //   throw new Error('OCR request failed!');
+          // }
       
-          const result = await response.json();
-          const text = result?.ParsedResults?.[0]?.ParsedText;
+          // const result = await response.json();
+          // const text = result?.ParsedResults?.[0]?.ParsedText;
 
-          console.log(result);
-          console.log(text);
+          // console.log(result);
+          // console.log(text);
 
 //           const text = `生产数量 发货数量	2024年装柜数据	每箱重量	箱规	•	
 // 业务员	装柜日	发票号	产品编号	（箱）	（箱）	平均每箱	重量	总毛重	净重	总体积	备注	
@@ -49,6 +47,23 @@ const ImageInputExtraction = ({ selectedOption }) => {
 // 黄银燕	库存	3446宁继宏	3038白色网孔	4389	1114	5.16	5.16	5.22	5.18	5771	5080	40	32	36	51.33	日期:2024-08	
 // L.or:082024	`;
 
+          const text = `亿泰货品清单	2024.11.04	
+箱装	箱规	
+序号	品名	件数	箱装数	毛重	总重量	净重	总重量	长	宽	高	立方数	批号	
+（kg）	（kg）	（kg）	（kg）	（月）	
+（件）	（只/件）	（cm）	（cm）	（cm）	
+1	21白双	190	2000	7.1	1349	6.5	1235	57	29	36	11.31	20240726	
+2	21白双	1214	2000	7.1	8619	6.5	7891	57	29	36	72.24	20241009	
+3	21兰双	160	2000	7.1	1136	6.5	1040	57	29	36	9.52	20241009	
+4	无纺布印花鞋套	300	1000	6	1800	5.1	1530	43	29	33	12.35	241009	
+5	绑带口罩	200	1000	5	1000	4.4	880	39	22	52	8.92	241009	
+6	40g隔离衣	900	100	9	8100	8.4	7560	56	27	30.5	41.50	24091902	
+7	23g隔离衣	1500	100	4.9	7350	4.5	6750	32.5	27	30.5	40.15	24100901	
+8	40g针织袖口	700	100	9.2	6440	8.6	6020	58	27	30	32.89	241009	
+9	0	0	0.00	
+10	0	0	0.00	
+总件数（件）：	5164	合计毛重（kg）：	35794	合计净重（kg）：	32906	合计立方数（月）：	228.875	`;
+
           // Step 1: Clean the input string by replacing \t, \r, and \n with spaces
           // e.g. "2024年装柜数据\t\r\n每箱重量\t平均每箱\t箱规\t\r\n业务员\t装柜日\t发票号\t产品编号\t生产数量\t（箱）\t发货数量\t（箱）
           const cleanedInput = text.replace(/[\t\r\n]+/g, ' ');
@@ -57,36 +72,22 @@ const ImageInputExtraction = ({ selectedOption }) => {
           const words = cleanedInput.split(/\s+/);
           console.log('words', words);
 
-          const products = [];
-          if (!words.includes("生产数量")) {
-            // 一个产品会有11个数值
-            for (let i = 0; i < words.length; i++) {
-              // if Chinese name is in the list of 中文品名
-              const index = keywords.indexOf(words[i]);
-              if (index != -1) {
-                // Extract the next 11 values after the keyword
-                const nextValues = words.slice(i + 1, i + 12);
-                if (nextValues.length === 11 && isNumericStringArray(nextValues)) {
-                  // Create a Product object and add it to the list
-                  // false means 没有生产数量
-                  products.push(createProduct(nextValues, rawData[index], false));
-                }
-              }
-            }
-          } else {
-            // 一个产品会有12个数值
-            for (let i = 0; i < words.length; i++) {
-              const index = keywords.indexOf(words[i]);
-              if (index != -1) {
-                // Extract the next 12 values after the keyword
-                const nextValues = words.slice(i + 1, i + 13);
-                if (nextValues.length === 12 && isNumericStringArray(nextValues)) {
-                  // Create a Product object and add it to the list
-                  products.push(createProduct(nextValues, rawData[index], true));
-                }
-              }
-            }
+          let products = [];
+          switch (selectedOption) {
+            case "浙江杭州":
+              products = HangzhouLogic(words);
+              break;
+            case "湖北仙桃":
+              products = XiantaoLogic(words);
+              break;
+            case "浙江湖州":
+              products = HuzhouLogic(words);
+              break;
+            default:
+              products = [];
+              break;
           }
+
           console.log(products);
           exportToExcel(products);
 
@@ -94,56 +95,6 @@ const ImageInputExtraction = ({ selectedOption }) => {
           console.error('Error:', error);
         }
       }
-      
-    const createProduct = (values, data, isLong) => ({
-      productName: data.officialChineseName,
-      engName: data.productName,
-      origin: selectedOption,
-      hsCode: getHsCode(data.officialChineseName),
-      rate: '13%',
-      // 箱数
-      count: values[0],
-      // 数量  (箱数 * perCarton)
-      number: roundToDecimals(Number(values[0]) * data.perCarton, 2),
-      // 数量 单位
-      unit: data.unit,
-      // 毛重
-      weight1: isLong ? values[6] : values[5],
-      // 净重
-      weight2: isLong ? values[7] : values[6],
-      // 体积CBM
-      volume: isLong ? values[11] : values[10],
-      // 单价USD
-      unitPrice: data.rate,
-      // 单价 单位
-      unitSlash: "/" + data.unit,
-      // 总价USD (单价USD * 数量)
-      total: roundToFixedDecimals(Number(data.rate) * Number(values[0]) * data.perCarton, 2)
-    });
-
-    // sometimes values can contain text, because text recognition sometimes ignores 0
-    function isNumericStringArray(arr) {
-      return arr.every(item => typeof item === 'string' && !isNaN(item) && item.trim() !== '');
-    }
-
-    function getHsCode(itemName) {
-      for (const [code, items] of hsCode) {
-        if (items.includes(itemName)) {
-          return code;
-        }
-      }
-      return "";
-    }  
-    
-    // return a string (without 0 at the end)
-    function roundToDecimals(value, decimal) {
-      return Number(value.toFixed(decimal));
-    }
-
-    // fixed 2 decimal places (with 0 at the end)
-    function roundToFixedDecimals(value, decimal) {
-      return `${value.toFixed(decimal)}`;
-    }
 
     function exportToExcel(products) {
       const dataRows = products.map(item => [
@@ -163,12 +114,11 @@ const ImageInputExtraction = ({ selectedOption }) => {
         item.total 
       ]);
 
-      // Step 2: Structure the data for Excel
+      // // Step 2: Structure the data for Excel
       // const sheetString = dataRows.join("\n")
-
       // console.log(sheetString);
 
-      // // Step 3: Create a worksheet and workbook
+      // Step 3: Create a worksheet and workbook
       const ws = XLSX.utils.aoa_to_sheet(dataRows);
       const wb = XLSX.utils.book_new();
       
@@ -184,7 +134,7 @@ const ImageInputExtraction = ({ selectedOption }) => {
                 type="file"
                 accept="image/*"
                 onChange={(e) => extractText(e.target.files[0])}
-                disabled={false}
+                disabled={selectedOption == ""}
             />
         </div>
       );

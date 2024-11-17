@@ -329,7 +329,7 @@ export const rawData = [
   // 白双 （白色条帽双巾）
   {
     productName: "Hairnet 12gsm Double Stitch 21",
-    productChineseName: "白双",
+    productChineseName: "21白双",
     officialChineseName: "白双",
     size: "",
     color: "White",
@@ -340,7 +340,7 @@ export const rawData = [
   },
   {
     productName: "Hairnet 12gsm Double Stitch 21",
-    productChineseName: "白双",
+    productChineseName: "21兰双",
     officialChineseName: "无纺布帽",
     size: "",
     color: "Blue",

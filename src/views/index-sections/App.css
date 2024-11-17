@@ -1,0 +1,14 @@
+/* The parent container takes up the full height of the page */
+.center-container {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+}
+
+/* Additional styling for the centered content */
+.centered-content {
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+  

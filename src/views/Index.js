@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import TextInputExtraction from "./index-sections/TextInputExtraction.js";
 import ImageInputExtraction from "./index-sections/ImageInputExtraction.js";
 import SelectFactory from './index-sections/SelectFactory.js';
-
 import UploadTemplate from './index-sections/UploadTemplate.js';
+
+import "./index-sections/App.css";
 
 // extract table: https://www.extracttable.com/
 
@@ -33,8 +34,12 @@ function Index() {
         <div className="main">
           <TextInputExtraction />
           {/* <UploadTemplate /> */}
-          <SelectFactory selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
-          <ImageInputExtraction selectedOption={selectedOption} />
+          <div className="center-container">
+            <div className="centered-content">
+              <SelectFactory selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+              <ImageInputExtraction selectedOption={selectedOption} />
+            </div>
+          </div>
         </div>
       </div>
     </>
