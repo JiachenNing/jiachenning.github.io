@@ -1,31 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import TextInputExtraction from "./index-sections/TextInputExtraction.js";
+import ImageInputExtraction from "./index-sections/ImageInputExtraction.js";
+import SelectFactory from './index-sections/SelectFactory.js';
 
-// reactstrap components
-// import {
-// } from "reactstrap";
-
-// core components
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import IndexHeader from "components/Headers/IndexHeader.js";
-import DarkFooter from "components/Footers/DarkFooter.js";
-
-// sections for this page
-import Images from "./index-sections/Images.js";
-import BasicElements from "./index-sections/BasicElements.js";
-import ImageToTable from "./index-sections/ImageToTable.js";
-import Test from "./index-sections/test.js";
-import Navbars from "./index-sections/Navbars.js";
-import Tabs from "./index-sections/Tabs.js";
-import Pagination from "./index-sections/Pagination.js";
-import Notifications from "./index-sections/Notifications.js";
-import Typography from "./index-sections/Typography.js";
-import Javascript from "./index-sections/Javascript.js";
-import Carousel from "./index-sections/Carousel.js";
-import NucleoIcons from "./index-sections/NucleoIcons.js";
-import CompleteExamples from "./index-sections/CompleteExamples.js";
-import SignUp from "./index-sections/SignUp.js";
-import Examples from "./index-sections/Examples.js";
-import Download from "./index-sections/Download.js";
+import UploadTemplate from './index-sections/UploadTemplate.js';
 
 // extract table: https://www.extracttable.com/
 
@@ -47,31 +25,17 @@ function Index() {
       document.body.classList.remove("sidebar-collapse");
     };
   });
+  const [selectedOption, setSelectedOption] = useState("");
+
   return (
     <>
-      {/* <IndexNavbar /> */}
       <div className="wrapper">
-        {/* <IndexHeader /> */}
         <div className="main">
-          {/* <Images /> */}
-          <BasicElements />
-          {/* <ImageToTable /> */}
-          <Test />
-          
-          {/* <Navbars />
-          <Tabs />
-          <Pagination />
-          <Notifications />
-          <Typography />
-          <Javascript />
-          <Carousel />
-          <NucleoIcons />
-          <CompleteExamples />
-          <SignUp />
-          <Examples />
-          <Download /> */}
+          <TextInputExtraction />
+          {/* <UploadTemplate /> */}
+          <SelectFactory selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+          <ImageInputExtraction selectedOption={selectedOption} />
         </div>
-        {/* <DarkFooter /> */}
       </div>
     </>
   );
