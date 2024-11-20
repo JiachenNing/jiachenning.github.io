@@ -2,6 +2,7 @@ import * as XLSX from 'xlsx';
 import { HangzhouLogic } from './HangzhouLogic';
 import { XiantaoLogic } from './XiantaoLogic';
 import { HuzhouLogic } from './HuzhouLogic';
+import { roundToDecimals } from './SharedUtils';
 
 const ImageInputExtraction = ({ selectedOption }) => {
     const extractText = async (file) => {
@@ -114,18 +115,57 @@ const ImageInputExtraction = ({ selectedOption }) => {
         item.total 
       ]);
 
+      console.log(dataRows);
+      const combinedData = combineArrays(dataRows);
+      console.log(combinedData);
+
       // // Step 2: Structure the data for Excel
-      // const sheetString = dataRows.join("\n")
+      // const sheetString = combinedData.join("\n")
       // console.log(sheetString);
 
       // Step 3: Create a worksheet and workbook
-      const ws = XLSX.utils.aoa_to_sheet(dataRows);
+      const ws = XLSX.utils.aoa_to_sheet(combinedData);
       const wb = XLSX.utils.book_new();
       
       XLSX.utils.book_append_sheet(wb, ws, "出口货物明细单（报关不用");
 
       // Step 4: Export the workbook to an Excel file
       XLSX.writeFile(wb, "ProductData.xlsx");
+    }
+
+    function combineArrays(data) {
+      const result = [];
+      const grouped = {};
+    
+      // Group rows by the first element
+      for (const row of data) {
+        const key = row[0]; // First element as the key
+        if (!grouped[key]) {
+          grouped[key] = [];
+        }
+        grouped[key].push(row);
+      }
+    
+      // Combine grouped rows
+      for (const key in grouped) {
+        const rows = grouped[key];
+        const firstRow = rows[0]; // Reference row for non-summing indexes
+        const combined = [...firstRow];
+    
+        // Sum values for indexes 5, 6, 8, 9, 10, 11, and 13
+        const sumIndexes = [5, 6, 8, 9, 10, 13];
+        for (const idx of sumIndexes) {
+          combined[idx] = rows.reduce((sum, row) => sum + parseFloat(row[idx]), 0);
+        }
+    
+        // Calculate value for index 11 as index 13 / index 5
+        combined[11] = roundToDecimals(combined[5] / combined[13], 2);
+    
+        // Push combined row to result
+        result.push(combined);
+      }
+    
+      return result;
     }
 
     return (

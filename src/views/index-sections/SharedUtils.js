@@ -13,9 +13,9 @@ export function getHsCode(itemName) {
     }
     return "";
 }  
-    
+
 // return a string (without 0 at the end)
-export function roundToDecimals(value, decimal) {
+export function roundToDecimals(value, decimal = 2) {
     return Number(value.toFixed(decimal));
 }
 

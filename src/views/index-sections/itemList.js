@@ -2,6 +2,7 @@ export const rawData = [
   // 无纺布擦布
   {
     productName: "Hygine Wipes (J-Cloth)",
+    officialEnglishName: "NON WOVEN FABRIC WIPE",
     productChineseName: "30*60蓝",
     officialChineseName: "无纺布",
     size: "60 x 30cm",
@@ -13,6 +14,7 @@ export const rawData = [
   },
   {
     productName: "Hygine Wipes (J-Cloth)",
+    officialEnglishName: "NON WOVEN FABRIC WIPE",
     productChineseName: "30*60白",
     officialChineseName: "无纺布",
     size: "60 x 30cm",
@@ -24,6 +26,7 @@ export const rawData = [
   },
   {
     productName: "Hygine Wipes (J-Cloth)",
+    officialEnglishName: "NON WOVEN FABRIC WIPE",
     productChineseName: "30*60红",
     officialChineseName: "无纺布",
     size: "60 x 30cm",
@@ -35,6 +38,7 @@ export const rawData = [
   },
   {
     productName: "Hygine Wipes (J-Cloth)",
+    officialEnglishName: "NON WOVEN FABRIC WIPE",
     productChineseName: "30*60绿",
     officialChineseName: "无纺布",
     size: "60 x 30cm",
@@ -47,6 +51,7 @@ export const rawData = [
 
   {
     productName: "Basic Dressing Pack (Large)",
+    officialEnglishName: "Basic Dressing Pack (Large)",
     productChineseName: "急救盒",
     officialChineseName: "急救盒",
     size: "",
@@ -58,6 +63,7 @@ export const rawData = [
   },
   {
     productName: "Basic Dressing Pack, Sterile Disposable",
+    officialEnglishName: "BASIC DRESSING PACK, Sterile Disposable",
     productChineseName: "急救盒",
     officialChineseName: "急救盒",
     size: "",
@@ -70,6 +76,7 @@ export const rawData = [
   // 无纺布擦布
   {
     productName: "Non-Woven Hygiene Wipes (J-Cloth)",
+    officialEnglishName: "NON WOVEN FABRIC WIPE",
     productChineseName: "30*33蓝",
     officialChineseName: "无纺布",
     size: "30cm x 33cm",
@@ -81,6 +88,7 @@ export const rawData = [
   },
   {
     productName: "Non-Woven Hygiene Wipes (J-Cloth)",
+    officialEnglishName: "NON WOVEN FABRIC WIPE",
     productChineseName: "30*33红",
     officialChineseName: "无纺布",
     size: "30cm x 33cm",
@@ -92,6 +100,7 @@ export const rawData = [
   },
   {
     productName: "Non-Woven Hygiene Wipes (J-Cloth)",
+    officialEnglishName: "NON WOVEN FABRIC WIPE",
     productChineseName: "30*33黄",
     officialChineseName: "无纺布",
     size: "30cm x 33cm",
@@ -103,6 +112,7 @@ export const rawData = [
   },
   {
     productName: "Tongue Depressor Sterile",
+    officialEnglishName: "Tongue Depressor Sterile",
     productChineseName: "压舌板",
     officialChineseName: "压舌板",
     size: "",
@@ -114,6 +124,7 @@ export const rawData = [
   },
   {
     productName: "Catheter Care Tray Set Sterile",
+    officialEnglishName: "Catheter Care Tray Set Sterile",
     productChineseName: "急救盒",
     officialChineseName: "急救盒",
     size: "",
@@ -125,6 +136,7 @@ export const rawData = [
   },
   {
     productName: "Cotton Wool Balls Sterile",
+    officialEnglishName: "Cotton Wool Balls Sterile",
     productChineseName: "棉球",
     officialChineseName: "棉球",
     size: "",
@@ -137,6 +149,7 @@ export const rawData = [
   // 弹性绷带
   {
     productName: "Elastic Crepe Bandage",
+    officialEnglishName: "Elastic Crepe Bandage",
     productChineseName: "80克本白",
     officialChineseName: "弹性绷带",
     size: "10cm x 4.5Mtr",
@@ -148,6 +161,7 @@ export const rawData = [
   },
   {
     productName: "Elastic Crepe Bandage",
+    officialEnglishName: "Elastic Crepe Bandage",
     productChineseName: "80克本白",
     officialChineseName: "弹性绷带",
     size: "20cm x 4.5Mt",
@@ -159,6 +173,7 @@ export const rawData = [
   },
   {
     productName: "Suture Removal Set Sterile",
+    officialEnglishName: "Suture Removal Set Sterile",
     productChineseName: "急救盒（拆线包）",
     officialChineseName: "急救盒",
     size: "",
@@ -170,6 +185,7 @@ export const rawData = [
   },
   {
     productName: "Disposable Plastic Shoe Cover",
+    officialEnglishName: "Disposable Plastic Shoe Cover",
     productChineseName: "无纺布印花鞋套",
     officialChineseName: "无纺布印花鞋套",
     size: "",
@@ -181,6 +197,7 @@ export const rawData = [
   },
   {
     productName: "Cotton Wool Balls, Sterile",
+    officialEnglishName: "Cotton Wool Balls, Sterile",
     productChineseName: "棉球",
     officialChineseName: "棉球",
     size: "",
@@ -193,6 +210,7 @@ export const rawData = [
   // 无纺布片 （小片）
   {
     productName: "Non Woven Gauze Swab 5x5 6 ply",
+    officialEnglishName: "Non Woven Gauze Swab",
     productChineseName: "无纺布片",
     officialChineseName: "无纺布片",
     size: "",
@@ -204,8 +222,9 @@ export const rawData = [
   },
   {
     productName: "Patient ID Band ADULT with Inserted Label",
-    productChineseName: "棉球",
-    officialChineseName: "棉球",
+    officialEnglishName: "Patient ID Band",
+    productChineseName: "识别带",
+    officialChineseName: "塑料身份识别带",
     size: "",
     color: "Blue",
     unit: "Pkt",
@@ -216,8 +235,9 @@ export const rawData = [
 
   {
     productName: "Patient ID Band ADULT with Inserted Label",
-    productChineseName: "棉球",
-    officialChineseName: "棉球",
+    officialEnglishName: "ID Band",
+    productChineseName: "识别带",
+    officialChineseName: "塑料身份识别带",
     size: "",
     color: "Yellow",
     unit: "Pkt",
@@ -229,6 +249,7 @@ export const rawData = [
   // 无纺布擦布
   {
     productName: "Non-Woven Hygiene Wipes",
+    officialEnglishName: "NON WOVEN FABRIC WIPE",
     productChineseName: "30*30蓝",
     officialChineseName: "无纺布",
     size: "30cm x 30cm",
@@ -240,6 +261,7 @@ export const rawData = [
   },
   {
     productName: "Non-Woven Hygiene Wipes",
+    officialEnglishName: "NON WOVEN FABRIC WIPE",
     productChineseName: "30*30红",
     officialChineseName: "无纺布",
     size: "30cm x 30cm",
@@ -251,6 +273,7 @@ export const rawData = [
   },
   {
     productName: "Non-Woven Hygiene Wipes",
+    officialEnglishName: "NON WOVEN FABRIC WIPE",
     productChineseName: "30*30黄",
     officialChineseName: "无纺布",
     size: "30cm x 30cm",
@@ -262,6 +285,7 @@ export const rawData = [
   },
   {
     productName: "Non-Woven Hygiene Wipes",
+    officialEnglishName: "NON WOVEN FABRIC WIPE",
     productChineseName: "30*30绿",
     officialChineseName: "无纺布",
     size: "30cm x 30cm",
@@ -273,6 +297,7 @@ export const rawData = [
   },
   {
     productName: "Non-Woven Hygiene Wipes",
+    officialEnglishName: "NON WOVEN FABRIC WIPE",
     productChineseName: "3038白色网孔",
     officialChineseName: "无纺布",
     size: "38 x 30cm",
@@ -285,8 +310,9 @@ export const rawData = [
 
   {
     productName: "Isolation Gown , PP 40gsm, Full Back, Long Sleeves",
+    officialEnglishName: "ISOLATION GOWN",
     productChineseName: "40g隔离衣",
-    officialChineseName: "隔离衣",
+    officialChineseName: "无纺布访问服",
     size: "117x135 cm",
     color: "Blue",
     unit: "Pcs",
@@ -296,8 +322,9 @@ export const rawData = [
   },
   {
     productName: "Isolation Gown , PP 23gsm, Full Back, Long Sleeves,Elastic Cuffs Tie Neck",
+    officialEnglishName: "ISOLATION GOWN",
     productChineseName: "23g隔离衣",
-    officialChineseName: "隔离衣",
+    officialChineseName: "无纺布访问服",
     size: "117x135 cm",
     color: "Dark Blue",
     unit: "Pcs",
@@ -307,7 +334,9 @@ export const rawData = [
   },
   {
     productName: "CTG Belt, disposable 1pair (Pink & Blue) (Jackson)",
-    productChineseName: "",
+    officialEnglishName: "CTG Belt",
+    productChineseName: "弹性绷带",
+    officialChineseName: "弹性绷带",
     size: "",
     color: "",
     unit: "Pair's",
@@ -317,8 +346,9 @@ export const rawData = [
   },
   {
     productName: "Isolation Gown ,40gsm PP NONWOVEN Knitted White Cuff",
+    officialEnglishName: "Isolation Gown",
     productChineseName: "40g针织袖口",
-    officialChineseName: "隔离衣",
+    officialChineseName: "无纺布访问服",
     size: "115x137cm",
     color: "Blue",
     unit: "Pcs",
@@ -329,8 +359,9 @@ export const rawData = [
   // 白双 （白色条帽双巾）
   {
     productName: "Hairnet 12gsm Double Stitch 21",
+    officialEnglishName: "Hairnet",
     productChineseName: "21白双",
-    officialChineseName: "白双",
+    officialChineseName: "无纺布帽",
     size: "",
     color: "White",
     unit: "Pkt",
@@ -340,6 +371,7 @@ export const rawData = [
   },
   {
     productName: "Hairnet 12gsm Double Stitch 21",
+    officialEnglishName: "Hairnet",
     productChineseName: "21兰双",
     officialChineseName: "无纺布帽",
     size: "",
@@ -351,6 +383,7 @@ export const rawData = [
   },
   {
     productName: "Disposable Shoe Cover Non-Woven, 35 Gsm",
+    officialEnglishName: "Disposable Shoe Cover",
     productChineseName: "无纺布印花鞋套",
     officialChineseName: "无纺布印花鞋套",
     size: "",
@@ -362,6 +395,7 @@ export const rawData = [
   },
   {
     productName: "Surgical Face Mask Blue 3Ply Tie-on Disposable",
+    officialEnglishName: "Surgical Face Mask",
     productChineseName: "绑带口罩",
     officialChineseName: "绑带口罩",
     size: "",

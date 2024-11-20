@@ -43,7 +43,7 @@ export function HangzhouLogic(words) {
     function createProduct(values, data, isLong) {
         return {
             productName: data.officialChineseName,
-            engName: data.productName,
+            engName: data.officialEnglishName,
             origin: "浙江杭州",
             hsCode: getHsCode(data.officialChineseName),
             rate: '13%',

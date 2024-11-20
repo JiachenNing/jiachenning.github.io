@@ -29,7 +29,7 @@ export function XiantaoLogic(words) {
     function createProduct(values, data) {
         return {
             productName: data.officialChineseName,
-            engName: data.productName,
+            engName: data.officialEnglishName,
             origin: "浙江湖州",
             hsCode: getHsCode(data.officialChineseName),
             rate: '13%',
